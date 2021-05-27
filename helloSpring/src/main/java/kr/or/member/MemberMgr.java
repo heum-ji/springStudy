@@ -5,6 +5,7 @@ public class MemberMgr {
 
 	public MemberMgr() {
 		super();
+		System.out.println("멤버매니저 객체 생성완료");
 	}
 
 	public MemberMgr(Member m) {

@@ -1,5 +1,8 @@
 package kr.or.member;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Member {
 	private String name;
 	private int age;
@@ -7,6 +10,7 @@ public class Member {
 
 	public Member() {
 		super();
+		System.out.println("멤버객체 생성완료");
 	}
 
 	public Member(String name, int age, String addr) {
