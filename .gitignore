@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/java,java-web,eclipse
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,java-web,eclipse
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,windows,java,java-web
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,windows,java,java-web
 
 ### Eclipse ###
 .metadata
@@ -97,4 +97,30 @@ hs_err_pid*
 ## ignoring target file
 target/
 
-# End of https://www.toptal.com/developers/gitignore/api/java,java-web,eclipse
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://www.toptal.com/developers/gitignore/api/eclipse,windows,java,java-web
