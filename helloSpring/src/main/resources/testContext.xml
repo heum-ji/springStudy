@@ -3,7 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-	<bean id="data1" class="kr.or.member.TestData">
+	<!-- 
+		scope속성을 명시하지 않으면 객체 요청 시 재사용
+		scope="protype" 속성 설정 시 객체 요청 시 새로운 객체를 만들어서 반환
+	-->
+	<bean id="data" class="kr.or.member.TestData" scope="prototype">
 		<constructor-arg>
 			<value type="java.lang.Integer">100</value>
 		</constructor-arg>
