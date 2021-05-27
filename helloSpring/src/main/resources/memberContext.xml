@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<!-- 객체 생성해서 데이터 넣기 (Setter 방식) -->
+	<!--
+	 	Member m1 = new Member();
+	 	m1.setName("test");
+	 	m1.setAge("20");
+	 	m1.setAddr("서울");
+	-->
+	<bean id="m1" class="kr.or.member.Member">
+		<property name="name" value="유저1" />
+		<property name="age">
+			<value type="java.lang.Integer">20</value>
+		</property>
+		<property name="addr" value="서울 영등포구 당산잼" />
+	</bean>
+	<!-- 객체생성해서 데이터 넣기 (생성자 이용) -->
+	<!-- 
+		Member m2 = new Member("유저222", 30, "부산");
+	-->
+	 <bean id="m2" class="kr.or.member.Member">
+	 	<constructor-arg value="유저2"/>
+	 	<constructor-arg>
+	 		<value type="java.lang.Integer">30</value>
+	 	</constructor-arg>
+	 	<constructor-arg value="부산"/>
+	 </bean>
+
+	 <!-- 객체생성해서 참조형 데이터 넣기(setter) -->
+	 <!-- 
+		MemberMgr mm1 = new MemberMgr();
+		mm1.setM(m1);
+	  -->
+	 <bean id="mm1" class="kr.or.member.MemberMgr">
+	 	<property name="m" ref="m1"/>
+	 </bean>
+	 <!-- 객체생성해서 참조형 데이터 넣기(생성자) -->
+	 <!-- 
+		MemberMgr mm2 = new MemberMgr(m2);
+	  -->
+	  <bean id="mm2" class="kr.or.member.MemberMgr">
+	  	<constructor-arg ref="m2"/>
+	  </bean>
+</beans>
