@@ -38,4 +38,22 @@ public class MemberDao {
 		return result;
 	}
 
+	// 아이디 찾기
+	public List searchId(Member m) {
+		String query = "select * from member where member_name = ? and phone = ?";
+		Object[] params = { m.getMemberName(), m.getPhone() };
+
+		List list = jdbcTemplate.query(query, params, new MemberRowMapper());
+		return list;
+	}
+
+	// 비밀번호 찾기
+	public List searchPw(Member m) {
+		String query = "select * from member where member_id = ? and phone = ?";
+		Object[] params = { m.getMemberId(), m.getPhone() };
+
+		List list = jdbcTemplate.query(query, params, new MemberRowMapper());
+		return list;
+	}
+
 }

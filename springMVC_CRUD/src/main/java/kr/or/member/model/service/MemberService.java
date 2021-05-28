@@ -34,4 +34,26 @@ public class MemberService {
 		return dao.insertMember(m);
 	}
 
+	// 아이디 찾기
+	public Member searchId(Member m) {
+		List list = dao.searchId(m);
+		Member member = null;
+		
+		if (!list.isEmpty()) {
+			member = (Member) list.get(0);
+		}
+		return member;
+	}
+
+	// 비밀번호 찾기
+	public Member searchPw(Member m) {
+		List list = dao.searchPw(m);
+		Member member = null;
+		
+		if (!list.isEmpty()) {
+			member = (Member) list.get(0);
+		}
+		return member;
+	}
+
 }

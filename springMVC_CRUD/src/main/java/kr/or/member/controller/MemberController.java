@@ -42,8 +42,8 @@ public class MemberController {
 	@RequestMapping(value = "/join.do")
 	public String join(Member m, Model model) {
 		int result = service.insertMember(m);
-		
-		if(result > 0) {
+
+		if (result > 0) {
 			model.addAttribute("msg", "회원가입 성공");
 		} else {
 			model.addAttribute("msg", "회원가입 실패");
@@ -52,4 +52,35 @@ public class MemberController {
 		return "common/msg";
 	}
 
+	@RequestMapping(value = "/searchFrm.do")
+	public String searchFrm() {
+		// /WEB-INF/views/ xx.jsp
+		return "member/searchFrm";
+	}
+
+	@RequestMapping(value = "/idSearch.do")
+	public String idSearch(Member m, Model model) {
+		Member member = service.searchId(m);
+
+		if (member != null) {
+			model.addAttribute("msg", "아이디는 [ " + member.getMemberId() + " ] 입니다.");
+		} else {
+			model.addAttribute("msg", "정보를 조회할 수 없습니다.");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+
+	@RequestMapping(value = "/pwSearch.do")
+	public String pwSearch(Member m, Model model) {
+		Member member = service.searchPw(m);
+		
+		if (member != null) {
+			model.addAttribute("msg", "비밀번호는 [ " + member.getMemberPw() + " ] 입니다.");
+		} else {
+			model.addAttribute("msg", "정보를 조회할 수 없습니다.");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
 }
