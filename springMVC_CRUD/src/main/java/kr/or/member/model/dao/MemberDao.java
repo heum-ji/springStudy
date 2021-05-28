@@ -56,4 +56,36 @@ public class MemberDao {
 		return list;
 	}
 
+	// 회원 탈퇴
+	public int deleteMember(String memberId) {
+		String query = "delete from member where member_id = ?";
+		return jdbcTemplate.update(query, memberId); // update()에서 Object[] 사용하지 않아도 됨;
+	}
+
+	// 아이디로 회원 조회
+	public List selectOneMember(String memberId) {
+		String query = "select * from member where member_id = ?";
+		Object[] params = { memberId };
+		return jdbcTemplate.query(query, params, new MemberRowMapper());
+	}
+
+	// 회원정보 수정
+	public int updateMember(Member m) {
+		String query = "update member set member_pw = ? , phone = ?, address = ?, gender = ? where member_id = ?";
+		Object[] params = { m.getMemberPw(), m.getPhone(), m.getAddress(), m.getGender(), m.getMemberId() };
+
+		return jdbcTemplate.update(query, params);
+	}
+
+	// 전체 회원 조회
+	public List selectAllMember() {
+		String query = "select * from member";
+		return jdbcTemplate.query(query, new MemberRowMapper());
+	}
+
+	public int selectAllMemberCount() {
+		String query = "select count(*) from member";	
+		return jdbcTemplate.queryForObject(query, int.class);
+	}
+
 }

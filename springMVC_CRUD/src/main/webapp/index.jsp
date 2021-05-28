@@ -24,14 +24,19 @@
 					<a href="/joinFrm.do">회원가입</a>
 					<a href="/searchFrm.do">아이디/비밀번호 찾기</a>
 				</fieldset>
-			</form>
+			</form>	
 		</c:when>
 		<c:otherwise>
 			<h2>[ ${sessionScope.m.memberName } ]님 환영합니다.</h2>
-			<h3><a href="logout.do">로그아웃</a></h3>
-			<h3><a href="mypage.do?memberId=${sessionScope.m.memberId }">마이페이지</a></h3>
-			<h3><a href="allMember.do">전체회원조회</a></h3>
-			<h3><a href="deleteMember.do?memberId=${sessionScope.m.memberId }">회원탈퇴</a></h3>
+			<h3><a href="/logout.do">로그아웃</a></h3>
+			<h3><a href="/mypage.do?memberId=${sessionScope.m.memberId }">마이페이지</a></h3>
+			<h3><a href="/allMember.do">전체회원조회</a></h3>
+			<h3><a href="allMemberCount.do">전체회원 수 조회</a></h3>
+			<h3><a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">회원탈퇴</a></h3>
+			<hr>
+			<%-- 공지사항용 --%>
+			<h1><a href="/allNotice.do">공지사항</a></h1>
+			<h1><a href="/noticeWriteFrm.do">글쓰기</a></h1>
 		</c:otherwise>
 	</c:choose>
 	

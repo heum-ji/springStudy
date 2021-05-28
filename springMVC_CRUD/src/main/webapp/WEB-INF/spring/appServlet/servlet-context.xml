@@ -34,5 +34,6 @@
 	
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.member" />
+	<context:component-scan base-package="kr.or.notice" />
 	
 </beans:beans>
