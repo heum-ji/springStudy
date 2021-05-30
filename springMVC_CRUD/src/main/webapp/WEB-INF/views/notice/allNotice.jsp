@@ -19,7 +19,7 @@
 		</tr>
 		<c:forEach items="${list }" var="notice" varStatus="i">
 			<tr>
-				<td>${i.count }</td>
+				<th>${i.count }</th>
 				<td><a href="/noticeView.do?noticeNo=${notice.noticeNo }">${notice.noticeTitle }</a></td>
 				<td>${notice.noticeWriter }</td>
 				<td>${notice.noticeDate }</td>

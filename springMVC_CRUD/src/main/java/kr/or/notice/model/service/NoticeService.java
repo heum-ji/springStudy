@@ -29,4 +29,14 @@ public class NoticeService {
 		return notice;
 	}
 
+	// 공지사항 작성
+	public int insertNotice(Notice n) {
+		return dao.insertNotice(n);
+	}
+
+	// 공지사항 삭제
+	public int deleteNotice(int noticeNo) {
+		return dao.deleteNotice(noticeNo);
+	}
+
 }

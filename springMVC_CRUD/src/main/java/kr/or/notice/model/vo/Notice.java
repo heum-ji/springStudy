@@ -36,6 +36,10 @@ public class Notice {
 		this.noticeTitle = noticeTitle;
 	}
 
+	public String getNoticeContentBr() {
+		return noticeContent.replaceAll("\r\n", "<br>");
+	}
+	
 	public String getNoticeContent() {
 		return noticeContent;
 	}
