@@ -37,6 +37,14 @@ public class NoticeDao {
 		return jdbcTemplate.update(query, params);
 	}
 
+	// 공지사항 수정
+	public int updateNotice(Notice n) {
+		String query = "update notice set notice_title = ?, notice_content = ? where notice_no = ?";
+		Object[] params = { n.getNoticeTitle(), n.getNoticeContent(), n.getNoticeNo() };
+
+		return jdbcTemplate.update(query, params);
+	}
+
 	// 공지사항 삭제
 	public int deleteNotice(int noticeNo) {
 		String query = "delete from notice where notice_no = ?";

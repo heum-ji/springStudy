@@ -36,7 +36,6 @@
 			<hr>
 			<%-- 공지사항용 --%>
 			<h1><a href="/allNotice.do">공지사항</a></h1>
-			<h1><a href="/noticeWriteFrm.do">글쓰기</a></h1>
 		</c:otherwise>
 	</c:choose>
 	

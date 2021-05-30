@@ -10,6 +10,10 @@
 <body>
 	<h1>공지사항 목록</h1>
 	<hr>
+	<a href="/">홈으로</a>
+	<a href="/noticeWriteFrm.do">글쓰기</a>
+	<br>
+	<br>
 	<table border="1">
 		<tr>
 			<th>번호</th>

@@ -34,6 +34,11 @@ public class NoticeService {
 		return dao.insertNotice(n);
 	}
 
+	// 공지사항 수정
+	public int updateNotice(Notice n) {
+		return dao.updateNotice(n);
+	}
+
 	// 공지사항 삭제
 	public int deleteNotice(int noticeNo) {
 		return dao.deleteNotice(noticeNo);
