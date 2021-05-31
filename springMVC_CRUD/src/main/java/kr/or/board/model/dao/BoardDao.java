@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.board.model.vo.Board;
 import kr.or.board.model.vo.BoardRowMapper;
 import kr.or.board.model.vo.FileTbl;
+import kr.or.board.model.vo.FileTblRowMapper;
 
 @Repository
 public class BoardDao {
@@ -42,5 +43,20 @@ public class BoardDao {
 	public List selectAllBoard() {
 		String query = "select * from board order by board_no desc";
 		return jdbcTemplate.query(query, new BoardRowMapper());
+	}
+
+	// 게시물 상세 조회
+	public List selectOneBoard(int boardNo) {
+		String query = "select * from board where board_no = ?";
+		Object[] params = { boardNo };
+		return jdbcTemplate.query(query, params, new BoardRowMapper());
+	}
+
+	// 첨부파일 조회
+	public List selectFileInfo(int boardNo) {
+		String query = "select * from file_tbl where board_no = ?";
+		Object[] params = { boardNo };
+
+		return jdbcTemplate.query(query, params, new FileTblRowMapper());
 	}
 }

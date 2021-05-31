@@ -26,7 +26,7 @@ public class BoardService {
 
 			for (FileTbl f : fileList) {
 				f.setBoardNo(boardNo); // 가장 최신 글번호 설정
-				result += dao.insertFile(f);
+				result += dao.insertFile(f); // 파일 업로드 성공 시 result + 1 -> 최종적으로 완료 시 fileList.size() == result
 			}
 		} else {
 			return -1;
@@ -37,5 +37,23 @@ public class BoardService {
 	// 게시판 목록 조회
 	public List selectAllBoard() {
 		return dao.selectAllBoard();
+	}
+
+	// 게시물 상세 조회
+	public Board selectOneBoard(int boardNo) {
+		// 게시물 정보 조회
+		List list = dao.selectOneBoard(boardNo);
+		Board b = null;
+
+		// 게시물 정보 삽입
+		if (!list.isEmpty()) {
+			b = (Board) list.get(0);
+		}
+
+		// 첨부파일 정보 조회
+		List fileList = dao.selectFileInfo(boardNo);
+		b.setFileList(fileList); // 첨부파일 정보 삽입
+
+		return b;
 	}
 }

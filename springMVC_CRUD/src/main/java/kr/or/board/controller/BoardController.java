@@ -119,4 +119,15 @@ public class BoardController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
+
+	// 게시물 상세 조회
+	@RequestMapping(value = "/boardView.do")
+	public String boardView(int boardNo, Model model) {
+		
+		Board b = service.selectOneBoard(boardNo);
+
+		model.addAttribute("board", b);
+		
+		return "board/boardView";
+	}
 }
