@@ -34,7 +34,9 @@
 			<h3><a href="allMemberCount.do">전체회원 수 조회</a></h3>
 			<h3><a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">회원탈퇴</a></h3>
 			<hr>
-			<%-- 공지사항용 --%>
+			<%-- 게시판 --%>
+			<h3><a href="/boardWriteFrm.do">게시판 글쓰기</a></h3>
+			<%-- 공지사항 --%>
 			<h1><a href="/allNotice.do">공지사항</a></h1>
 		</c:otherwise>
 	</c:choose>

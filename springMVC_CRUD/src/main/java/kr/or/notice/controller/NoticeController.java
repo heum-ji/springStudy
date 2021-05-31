@@ -19,6 +19,7 @@ public class NoticeController {
 	@RequestMapping(value = "/allNotice.do")
 	public String allNotice(Model model) {
 		List list = service.selectAllNotice();
+
 		model.addAttribute("list", list);
 
 		return "notice/allNotice";
@@ -51,6 +52,7 @@ public class NoticeController {
 			model.addAttribute("msg", "공지사항 작성 실패");
 		}
 		model.addAttribute("loc", "/allNotice.do");
+
 		return "common/msg";
 	}
 
@@ -75,6 +77,7 @@ public class NoticeController {
 			model.addAttribute("msg", "공지사항 수정 실패");
 		}
 		model.addAttribute("loc", "/noticeView.do?noticeNo=" + n.getNoticeNo());
+
 		return "common/msg";
 	}
 
@@ -89,7 +92,8 @@ public class NoticeController {
 			model.addAttribute("msg", "공지사항 삭제 실패");
 		}
 		model.addAttribute("loc", "/allNotice.do");
+
 		return "common/msg";
 	}
-	
+
 }

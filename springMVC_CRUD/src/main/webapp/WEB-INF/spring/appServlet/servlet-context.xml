@@ -31,9 +31,17 @@
 	<beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"/>
 	</beans:bean>
+
+	<!-- 파일 업로드 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 첨부파일 총 용량  10Mb제한 -->
+		<beans:property name="maxUploadSize" value="10485760" />
+	</beans:bean>
 	
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.member" />
 	<context:component-scan base-package="kr.or.notice" />
+	<context:component-scan base-package="kr.or.board" />
 	
 </beans:beans>
