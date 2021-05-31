@@ -1,10 +1,13 @@
 package kr.or.board.model.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.board.model.vo.Board;
+import kr.or.board.model.vo.BoardRowMapper;
 import kr.or.board.model.vo.FileTbl;
 
 @Repository
@@ -33,5 +36,11 @@ public class BoardDao {
 		Object[] params = { f.getFilename(), f.getFilepath(), f.getBoardNo() };
 
 		return jdbcTemplate.update(query, params);
+	}
+
+	// 게시판 목록 조회
+	public List selectAllBoard() {
+		String query = "select * from board order by board_no desc";
+		return jdbcTemplate.query(query, new BoardRowMapper());
 	}
 }

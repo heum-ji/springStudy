@@ -1,6 +1,7 @@
 package kr.or.board.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,10 @@ public class BoardService {
 			return -1;
 		}
 		return result;
+	}
+
+	// 게시판 목록 조회
+	public List selectAllBoard() {
+		return dao.selectAllBoard();
 	}
 }

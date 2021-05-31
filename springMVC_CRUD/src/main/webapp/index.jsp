@@ -36,6 +36,7 @@
 			<hr>
 			<%-- 게시판 --%>
 			<h3><a href="/boardWriteFrm.do">게시판 글쓰기</a></h3>
+			<h3><a href="/boardList.do">게시판 목록</a></h3>
 			<%-- 공지사항 --%>
 			<h1><a href="/allNotice.do">공지사항</a></h1>
 		</c:otherwise>

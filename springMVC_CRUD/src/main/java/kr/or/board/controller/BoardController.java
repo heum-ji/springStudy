@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.plaf.multi.MultiOptionPaneUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +31,16 @@ public class BoardController {
 		return "board/boardWriteFrm";
 	}
 
+	// 게시판 목록 조회
 	@RequestMapping(value = "/boardList.do")
-	public String boardList() {
-		return "";
+	public String boardList(Model model) {
+		List list = service.selectAllBoard();
+
+		model.addAttribute("list", list);
+
+		return "board/boardList";
 	}
-	
+
 	// 글 쓰기 - 다중 파일 업로드 multipartfile 매개변수명 = 화면에서의 file 인풋의 name
 	@RequestMapping(value = "/boardWrite.do")
 	public String boardWrite(Board b, MultipartFile files[], HttpServletRequest request, Model model) {
