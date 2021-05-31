@@ -12,7 +12,7 @@
 	<form action="/boardWrite.do" method="post" enctype="multipart/form-data">
 		제목 : <input type="text" name="boardTitle"><br>
 		작성자 : <input type="text" name="boardWriter" value="${sessionScope.m.memberId }" readonly><br>
-		파일 : <input type="file" name="file"><br>
+		파일 : <input type="file" name="files" multiple><br>
 		내용 : <textarea rows="5" cols="20" name="boardContent" style="resize: none"></textarea><br>
 		<input type="submit" value="작성">
 	</form>
