@@ -34,7 +34,7 @@ public class BoardController {
 	// 게시판 목록 조회
 	@RequestMapping(value = "/boardList.do")
 	public String boardList(Model model) {
-		List list = service.selectAllBoard();
+		List list = service.boardList();
 
 		model.addAttribute("list", list);
 
@@ -123,11 +123,11 @@ public class BoardController {
 	// 게시물 상세 조회
 	@RequestMapping(value = "/boardView.do")
 	public String boardView(int boardNo, Model model) {
-		
+
 		Board b = service.selectOneBoard(boardNo);
 
 		model.addAttribute("board", b);
-		
+
 		return "board/boardView";
 	}
 }

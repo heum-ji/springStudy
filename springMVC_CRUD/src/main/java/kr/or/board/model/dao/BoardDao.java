@@ -40,7 +40,7 @@ public class BoardDao {
 	}
 
 	// 게시판 목록 조회
-	public List selectAllBoard() {
+	public List boardList() {
 		String query = "select * from board order by board_no desc";
 		return jdbcTemplate.query(query, new BoardRowMapper());
 	}

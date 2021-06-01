@@ -35,8 +35,8 @@ public class BoardService {
 	}
 
 	// 게시판 목록 조회
-	public List selectAllBoard() {
-		return dao.selectAllBoard();
+	public List boardList() {
+		return dao.boardList();
 	}
 
 	// 게시물 상세 조회
@@ -51,9 +51,13 @@ public class BoardService {
 		}
 
 		// 첨부파일 정보 조회
-		List fileList = dao.selectFileInfo(boardNo);
-		b.setFileList(fileList); // 첨부파일 정보 삽입
+		if (b != null) {
+			List fileList = dao.selectFileInfo(boardNo);
 
+			if (!fileList.isEmpty()) {
+				b.setFileList(fileList); // 첨부파일 정보 삽입
+			}
+		}
 		return b;
 	}
 }

@@ -12,7 +12,7 @@
 	<hr>
 	<table border="1">
 		<tr>
-			<th colspan="1">제목</th>
+			<th>제목</th>
 			<td colspan="3">${board.boardTitle }</td>
 		</tr>
 		<tr>
@@ -26,12 +26,12 @@
 			<td colspan="3">
 				<!-- 첨부파일 -->
 				 <c:forEach items="${board.fileList }" var="fileinfo">
-					<a href="/fileDown.do">${fileinfo.filename }</a>
+					<a href="/boardFileDown.do?fileNo=${fileinfo.fileNo }">${fileinfo.filename }</a>
 				</c:forEach>
 			</td>
 		</tr>
 		<tr>
-			<th colspan="1">내용</th>
+			<th>내용</th>
 			<td colspan="3">${board.boardContentBr }</td>
 		</tr>
 		<tr>
