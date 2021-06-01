@@ -15,7 +15,6 @@ public class MemberService {
 
 	public MemberService() {
 		super();
-		System.out.println("MemberService 생성완료");
 	}
 
 	// 로그인
@@ -87,6 +86,23 @@ public class MemberService {
 	// 전체 회원 수 조회
 	public int selectAllMemberCount() {
 		int result = dao.selectAllMemberCount();
+		return result;
+	}
+
+	// 비밀번호 확인
+	public Member checkPwMember(Member m) {
+		List list = dao.checkPwMember(m);
+		Member member = null;
+
+		if (!list.isEmpty()) {
+			member = (Member) list.get(0);
+		}
+		return member;
+	}
+
+	// 비밀번호 수정
+	public int changePwMember(Member m) {
+		int result = dao.changePwMember(m);
 		return result;
 	}
 

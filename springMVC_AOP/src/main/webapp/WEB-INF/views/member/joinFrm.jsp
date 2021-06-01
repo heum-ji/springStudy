@@ -11,9 +11,9 @@
 	<hr>
 	<form action="/join.do" method="post">
 		아이디 : <input type="text" name="memberId"><br>
-		비밀번호 : <input type="password" name="memberPw"><br>
-		이름 : <input type="text" name="memberName"><br>
-		전화번호 : <input type="text" name="phone"><br>
+		비밀번호 : <input type="password" name="memberPw" required><br>
+		이름 : <input type="text" name="memberName" required><br>
+		전화번호 : <input type="text" name="phone" required><br>
 		주소 : <input type="text" name="address"><br>
 		성별 : 
 		<input type="radio" name="gender" value="남">남자

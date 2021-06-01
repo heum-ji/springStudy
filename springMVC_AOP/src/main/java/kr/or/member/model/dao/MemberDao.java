@@ -16,16 +16,15 @@ public class MemberDao {
 
 	public MemberDao() {
 		super();
-		System.out.println("MemberDao 생성 완료");
 	}
 
 	// 로그인
 	public List selectOneMember(Member m) {
 		String query = "select * from member where member_id = ? and member_pw = ?";
 		Object[] params = { m.getMemberId(), m.getMemberPw() };
+
 		// 조회결과 갯수와 상관없이 무조건 list
-		List list = jdbcTemplate.query(query, params, new MemberRowMapper());
-		return list;
+		return jdbcTemplate.query(query, params, new MemberRowMapper());
 	}
 
 	// 회원가입
@@ -34,8 +33,7 @@ public class MemberDao {
 		Object[] params = { m.getMemberId(), m.getMemberPw(), m.getMemberName(), m.getPhone(), m.getAddress(),
 				m.getGender() };
 
-		int result = jdbcTemplate.update(query, params);
-		return result;
+		return jdbcTemplate.update(query, params);
 	}
 
 	// 아이디 찾기
@@ -43,8 +41,7 @@ public class MemberDao {
 		String query = "select * from member where member_name = ? and phone = ?";
 		Object[] params = { m.getMemberName(), m.getPhone() };
 
-		List list = jdbcTemplate.query(query, params, new MemberRowMapper());
-		return list;
+		return jdbcTemplate.query(query, params, new MemberRowMapper());
 	}
 
 	// 비밀번호 찾기
@@ -52,13 +49,13 @@ public class MemberDao {
 		String query = "select * from member where member_id = ? and phone = ?";
 		Object[] params = { m.getMemberId(), m.getPhone() };
 
-		List list = jdbcTemplate.query(query, params, new MemberRowMapper());
-		return list;
+		return jdbcTemplate.query(query, params, new MemberRowMapper());
 	}
 
 	// 회원 탈퇴
 	public int deleteMember(String memberId) {
 		String query = "delete from member where member_id = ?";
+
 		return jdbcTemplate.update(query, memberId); // update()에서 Object[] 사용하지 않아도 됨;
 	}
 
@@ -66,6 +63,7 @@ public class MemberDao {
 	public List selectOneMember(String memberId) {
 		String query = "select * from member where member_id = ?";
 		Object[] params = { memberId };
+
 		return jdbcTemplate.query(query, params, new MemberRowMapper());
 	}
 
@@ -87,6 +85,22 @@ public class MemberDao {
 	public int selectAllMemberCount() {
 		String query = "select count(*) from member";
 		return jdbcTemplate.queryForObject(query, int.class);
+	}
+
+	// 비밀번호 확인
+	public List checkPwMember(Member m) {
+		String query = "select * from member where member_id = ? and member_pw = ?";
+		Object[] params = { m.getMemberId(), m.getMemberPw() };
+
+		return jdbcTemplate.query(query, params, new MemberRowMapper());
+	}
+
+	// 비밀번호 수정
+	public int changePwMember(Member m) {
+		String query = "update member set member_pw = ? where member_id = ?";
+		Object[] params = {m.getMemberPw(), m.getMemberId() };
+
+		return jdbcTemplate.update(query, params);
 	}
 
 }

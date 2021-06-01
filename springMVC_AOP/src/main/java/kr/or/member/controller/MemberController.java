@@ -19,7 +19,6 @@ public class MemberController {
 
 	public MemberController() {
 		super();
-		System.out.println("MemberController 생성 완료");
 	}
 
 	@RequestMapping(value = "/login.do")
@@ -139,15 +138,44 @@ public class MemberController {
 		return "common/msg";
 	}
 
-	// 비밀번호 확인 창
+	// 비밀번호 확인 창 이동
 	@RequestMapping(value = "/checkPwFrm.do")
-	public String checkPwFrm(String memberId) {
+	public String checkPwFrm() {
 		return "member/checkPwFrm";
 	}
 
-	// 비밀번호 수정 창
+	// 비밀번호 확인
+	@RequestMapping(value = "/checkPwMember.do")
+	public String checkPwMember(Member m, Model model) {
+		Member member = service.checkPwMember(m);
+
+		if (member != null) {
+			model.addAttribute("msg", "비밀번호 확인 성공");
+			model.addAttribute("loc", "/changePwFrm.do");
+		} else {
+			model.addAttribute("msg", "비밀번호를 확인해주세요.");
+			model.addAttribute("loc", "/checkPwFrm.do"); // 다시 비밀번호 확인 창으로 이동
+		}
+		return "common/msg";
+	}
+
+	// 비밀번호 수정 창 이동
 	@RequestMapping(value = "/changePwFrm.do")
 	public String changePwFrm() {
 		return "member/changePwFrm";
+	}
+
+	// 비밀번호 수정
+	@RequestMapping(value = "/changePwMember.do")
+	public String changePwMember(Member m, Model model) {
+		int result = service.changePwMember(m);
+		
+		if(result > 0) {
+			System.out.println("비밀번호 수정 성공!");
+		} else {
+			System.out.println("비밀번호 수정 실패!");
+		}
+		
+		return "redirect:/mypage.do?memberId=" + m.getMemberId(); // mypage
 	}
 }

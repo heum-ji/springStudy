@@ -11,6 +11,9 @@
 <body>
 	<h1>마이페이지</h1>
 	<hr>
+	<a href="/">홈으로</a>
+	<br>
+	<br>
 	<form action="/updateMemberInfo.do">
 		<fieldset>
 			아이디 : <input type="text" name="memberId" value=${member.memberId }  readonly><br>
@@ -35,7 +38,7 @@
 	</form>
 	<script>
 		function checkPwFrm() {
-			location.href = "/checkPwFrm.do?memberId=${member.memberId}"; // 비밀번호 변경 창으로
+			location.href = "/checkPwFrm.do"; // 비밀번호 변경 창으로
 		}
 	</script>
 </body>
