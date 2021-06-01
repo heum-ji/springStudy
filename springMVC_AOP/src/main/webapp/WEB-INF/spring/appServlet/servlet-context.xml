@@ -42,12 +42,29 @@
 	</beans:bean>
 	
 	<!-- AOP 테스트 -->
-	<beans:bean id="log" class="kr.or.common.LogClass"/>
-	<beans:bean id="logging" class="kr.or.common.LoggingClass"/>
+	<!-- Before -->
+	<!-- <beans:bean id="beforeAdvice" class="kr.or.common.BeforeAdvice"></beans:bean> -->
+	<!-- AfterReturning -->
+	<!-- <beans:bean id="after1" class="kr.or.common.AfterReturningAdvice"></beans:bean> -->
+	<!-- AfterThrowing -->
+	<!-- <beans:bean id="after2" class="kr.or.common.AfterThrowingAdvice"></beans:bean> -->
+	<!-- Around -->
+	<!-- <beans:bean id="around" class="kr.or.common.AroundAdvice"></beans:bean> -->
+	
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* kr.or.member.model.service..*Service.*(*,..))" id="allPointcut"/>
+		<aop:aspect ref="around">
+			<aop:around method="arounLog" pointcut-ref="allPointcut"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+	<!-- AOP 어노테이션방식 사용 선언 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.member" />
 	<context:component-scan base-package="kr.or.notice" />
 	<context:component-scan base-package="kr.or.board" />
+	<context:component-scan base-package="kr.or.common" />
 	
 </beans:beans>
