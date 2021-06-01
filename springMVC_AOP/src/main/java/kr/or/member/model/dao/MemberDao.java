@@ -70,9 +70,9 @@ public class MemberDao {
 	}
 
 	// 회원정보 수정
-	public int updateMember(Member m) {
-		String query = "update member set member_pw = ? , phone = ?, address = ?, gender = ? where member_id = ?";
-		Object[] params = { m.getMemberPw(), m.getPhone(), m.getAddress(), m.getGender(), m.getMemberId() };
+	public int updateMemberInfo(Member m) {
+		String query = "update member set phone = ?, address = ?, gender = ? where member_id = ?";
+		Object[] params = { m.getPhone(), m.getAddress(), m.getGender(), m.getMemberId() };
 
 		return jdbcTemplate.update(query, params);
 	}
@@ -83,8 +83,9 @@ public class MemberDao {
 		return jdbcTemplate.query(query, new MemberRowMapper());
 	}
 
+	// 전체 회원 수 조회
 	public int selectAllMemberCount() {
-		String query = "select count(*) from member";	
+		String query = "select count(*) from member";
 		return jdbcTemplate.queryForObject(query, int.class);
 	}
 

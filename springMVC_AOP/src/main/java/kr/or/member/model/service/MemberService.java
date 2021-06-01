@@ -73,8 +73,8 @@ public class MemberService {
 	}
 
 	// 회원정보 수정
-	public int updateMember(Member m) {
-		int result = dao.updateMember(m);
+	public int updateMemberInfo(Member m) {
+		int result = dao.updateMemberInfo(m);
 		return result;
 	}
 
@@ -84,6 +84,7 @@ public class MemberService {
 		return list;
 	}
 
+	// 전체 회원 수 조회
 	public int selectAllMemberCount() {
 		int result = dao.selectAllMemberCount();
 		return result;

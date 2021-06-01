@@ -11,7 +11,7 @@
 <body>
 	<h1>마이페이지</h1>
 	<hr>
-	<form action="/updateMember.do">
+	<form action="/updateMemberInfo.do">
 		<fieldset>
 			아이디 : <input type="text" name="memberId" value=${member.memberId }  readonly><br>
 			<button onclick="checkPwFrm();" type="button">비밀번호변경</button><br>

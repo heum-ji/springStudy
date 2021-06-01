@@ -114,9 +114,9 @@ public class MemberController {
 		return "member/mypage";
 	}
 
-	@RequestMapping(value = "/updateMember.do")
-	public String updateMember(Member m) {
-		int result = service.updateMember(m);
+	@RequestMapping(value = "/updateMemberInfo.do")
+	public String updateMemberInfo(Member m) {
+		int result = service.updateMemberInfo(m);
 
 		return "redirect:/mypage.do?memberId=" + m.getMemberId(); // mypage 호출 서블릿
 	}
