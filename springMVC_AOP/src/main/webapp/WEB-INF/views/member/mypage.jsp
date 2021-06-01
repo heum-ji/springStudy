@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- JSTL Core 태그 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
 	<form action="/updateMember.do">
 		<fieldset>
 			아이디 : <input type="text" name="memberId" value=${member.memberId }  readonly><br>
-			비번: <input type="password" name="memberPw" value=${member.memberPw }><br>
+			<button onclick="checkPwFrm();" type="button">비밀번호변경</button><br>
 			이름 : <input type="text" name="memberName" value=${member.memberName } readonly><br>
 			전화번호 : <input type="text" name="phone" value=${member.phone }><br>
 			주소 : <input type="text" name="address" value=${member.address }><br>
@@ -34,5 +33,10 @@
 			<input type="submit" value="정보수정">
 		</fieldset>
 	</form>
+	<script>
+		function checkPwFrm() {
+			location.href = "/checkPwFrm.do?memberId=${member.memberId}"; // 비밀번호 변경 창으로
+		}
+	</script>
 </body>
 </html>

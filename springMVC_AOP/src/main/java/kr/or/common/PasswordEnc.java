@@ -16,6 +16,7 @@ public class PasswordEnc {
 	private SHA256Enc enc;
 
 	// MemberService에서 메서드명이 Member로 끝나면서 매개변수가 Member 타입인 메서드
+	// 로그인 / 회원가입 / 회원정보 수정
 	@Pointcut("execution (* kr.or.member.model.service.MemberService.*Member(kr.or.member.model.vo.Member))")
 	public void encPointcut() {}
 	

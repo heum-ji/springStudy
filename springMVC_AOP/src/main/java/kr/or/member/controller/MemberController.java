@@ -120,22 +120,34 @@ public class MemberController {
 
 		return "redirect:/mypage.do?memberId=" + m.getMemberId(); // mypage 호출 서블릿
 	}
-	
+
 	@RequestMapping(value = "/allMember.do")
 	public String allMember(Model model) {
 		List list = service.selectAllMember();
 		model.addAttribute("list", list);
-		
+
 		return "member/allMember";
 	}
-	
+
 	@RequestMapping(value = "allMemberCount.do")
 	public String allMemberCount(Model model) {
 		int result = service.selectAllMemberCount();
-		
+
 		model.addAttribute("msg", "총 회원수는 " + result + " 명 입니다.");
-		model.addAttribute("loc","/");
-		
+		model.addAttribute("loc", "/");
+
 		return "common/msg";
+	}
+
+	// 비밀번호 확인 창
+	@RequestMapping(value = "/checkPwFrm.do")
+	public String checkPwFrm(String memberId) {
+		return "member/checkPwFrm";
+	}
+
+	// 비밀번호 수정 창
+	@RequestMapping(value = "/changePwFrm.do")
+	public String changePwFrm() {
+		return "member/changePwFrm";
 	}
 }

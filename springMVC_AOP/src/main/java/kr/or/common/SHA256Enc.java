@@ -25,7 +25,7 @@ public class SHA256Enc {
 			// byte -> HexString 
 			// 0xff : 255 / 0x100 : 256
 			// 0xff연산 : byte 원본 값 유지하기 위해서 / 맨 앞 bit가 1인 경우 보수처리 때문에 다른 값이 됨
-			// 0x100 : 
+			// 0x100 : 3자리 고정
 			// sustring : 불필요한 제일 앞의 1을 제거하기 위해서
 			String tmpText = Integer.toString((tmp & 0xff) + 0x100, 16).substring(1);
 			sb.append(tmpText);
