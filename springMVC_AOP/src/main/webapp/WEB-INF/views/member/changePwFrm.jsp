@@ -20,9 +20,6 @@
 			var updatePw = form.memberPw.value; // 새 비밀번호
 			var updatePwRe = form.memberPwRe.value; // 새 비밀번호 확인
 
-			console.log(updatePw);
-			console.log(updatePwRe);
-
 			// 비번 공백 거르기
 			if (updatePw != "") {
 				// 비번 일치

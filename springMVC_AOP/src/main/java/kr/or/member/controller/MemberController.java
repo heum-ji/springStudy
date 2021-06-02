@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
@@ -145,37 +146,69 @@ public class MemberController {
 	}
 
 	// 비밀번호 확인
-	@RequestMapping(value = "/checkPwMember.do")
-	public String checkPwMember(Member m, Model model) {
-		Member member = service.checkPwMember(m);
+	@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
+	@RequestMapping(value = "/checkPw.do")
+	public String checkPw(Member m) {
+		// 해당하는 아이디의 비밀번호가 일치하는지 확인
+		Member member = service.selectOneMember(m);
 
 		if (member != null) {
-			model.addAttribute("msg", "비밀번호 확인 성공");
-			model.addAttribute("loc", "/changePwFrm.do");
+			// 입력한 비밀번호가 일치하는 경우
+			return "1";
 		} else {
-			model.addAttribute("msg", "비밀번호를 확인해주세요.");
-			model.addAttribute("loc", "/checkPwFrm.do"); // 다시 비밀번호 확인 창으로 이동
+			// 비밀번호 틀린 경우
+			return "0";
 		}
+	}
+
+	// 비밀번호 변경
+	@RequestMapping(value = "/changePw.do")
+	public String changePw(Member m, Model model) {
+		int result = service.changePwMember(m);
+
+		if (result > 0) {
+			model.addAttribute("msg", "비밀번호 변경 성공");
+		} else {
+			model.addAttribute("msg", "비밀번호 변경 실패");
+		}
+		model.addAttribute("loc", "/mypage.do?memberId=" + m.getMemberId());
+
 		return "common/msg";
 	}
 
-	// 비밀번호 수정 창 이동
-	@RequestMapping(value = "/changePwFrm.do")
-	public String changePwFrm() {
-		return "member/changePwFrm";
-	}
+	// ajax 사용 x
+//	// 비밀번호 확인
+//	@RequestMapping(value = "/checkPwMember.do")
+//	public String checkPwMember(Member m, Model model) {
+//		Member member = service.checkPwMember(m);
+//
+//		if (member != null) {
+//			model.addAttribute("msg", "비밀번호 확인 성공");
+//			model.addAttribute("loc", "/changePwFrm.do");
+//		} else {
+//			model.addAttribute("msg", "비밀번호를 확인해주세요.");
+//			model.addAttribute("loc", "/checkPwFrm.do"); // 다시 비밀번호 확인 창으로 이동
+//		}
+//		return "common/msg";
+//	}
 
-	// 비밀번호 수정
-	@RequestMapping(value = "/changePwMember.do")
-	public String changePwMember(Member m, Model model) {
-		int result = service.changePwMember(m);
-		
-		if(result > 0) {
-			System.out.println("비밀번호 수정 성공!");
-		} else {
-			System.out.println("비밀번호 수정 실패!");
-		}
-		
-		return "redirect:/mypage.do?memberId=" + m.getMemberId(); // mypage
-	}
+//	// 비밀번호 수정 창 이동
+//	@RequestMapping(value = "/changePwFrm.do")
+//	public String changePwFrm() {
+//		return "member/changePwFrm";
+//	}
+//
+//	// 비밀번호 수정
+//	@RequestMapping(value = "/changePwMember.do")
+//	public String changePwMember(Member m, Model model) {
+//		int result = service.changePwMember(m);
+//		
+//		if(result > 0) {
+//			System.out.println("비밀번호 수정 성공!");
+//		} else {
+//			System.out.println("비밀번호 수정 실패!");
+//		}
+//		
+//		return "redirect:/mypage.do?memberId=" + m.getMemberId(); // mypage
+//	}
 }

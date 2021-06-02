@@ -102,8 +102,7 @@ public class MemberService {
 
 	// 비밀번호 수정
 	public int changePwMember(Member m) {
-		int result = dao.changePwMember(m);
-		return result;
+		return dao.changePwMember(m);
 	}
 
 }
