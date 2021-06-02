@@ -2,6 +2,7 @@ package kr.or.member.model.dao;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,19 +13,15 @@ import kr.or.member.model.vo.MemberRowMapper;
 @Repository
 public class MemberDao {
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private SqlSessionTemplate sqlSession;
 
 	public MemberDao() {
 		super();
 	}
 
 	// 로그인
-	public List selectOneMember(Member m) {
-		String query = "select * from member where member_id = ? and member_pw = ?";
-		Object[] params = { m.getMemberId(), m.getMemberPw() };
-
-		// 조회결과 갯수와 상관없이 무조건 list
-		return jdbcTemplate.query(query, params, new MemberRowMapper());
+	public Member selectOneMember(Member m) {
+		return sqlSession.selectOne("member.selectOneMember", m);
 	}
 
 	// 회원가입

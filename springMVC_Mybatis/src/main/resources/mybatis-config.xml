@@ -10,5 +10,6 @@
 	<typeAliases>
 		<typeAlias type="kr.or.board.model.vo.Board" alias="b" />
 		<typeAlias type="kr.or.board.model.vo.FileTbl" alias="f" />
+		<typeAlias type="kr.or.member.model.vo.Member" alias="m" />
 	</typeAliases>
 </configuration>

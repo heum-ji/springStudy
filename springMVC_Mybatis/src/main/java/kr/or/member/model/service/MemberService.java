@@ -19,13 +19,7 @@ public class MemberService {
 
 	// 로그인
 	public Member selectOneMember(Member m) {
-		List list = dao.selectOneMember(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+		return dao.selectOneMember(m);
 	}
 
 	// 회원가입
