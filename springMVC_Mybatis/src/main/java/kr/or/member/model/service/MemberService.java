@@ -15,13 +15,7 @@ public class MemberService {
 
 	// 로그인
 	public Member selectOneMember(Member m) {
-		List list = dao.selectOneMember(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+		return dao.selectOneMember(m);
 	}
 
 	// 회원가입
@@ -31,24 +25,12 @@ public class MemberService {
 
 	// 아이디 찾기
 	public Member searchId(Member m) {
-		List list = dao.searchId(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+		return dao.searchId(m);
 	}
 
 	// 비밀번호 찾기
 	public Member searchPw(Member m) {
-		List list = dao.searchPw(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+		return dao.searchPw(m);
 	}
 
 	// 회원 탈퇴
@@ -57,32 +39,23 @@ public class MemberService {
 	}
 
 	// 아이디로 회원 조회
-	public Member selectOneMember(String memberId) {
-		List list = dao.selectOneMember(memberId);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+	public Member selectOneMemberId(String memberId) {
+		return dao.selectOneMemberId(memberId);
 	}
 
 	// 회원정보 수정
 	public int updateMemberInfo(Member m) {
-		int result = dao.updateMemberInfo(m);
-		return result;
+		return dao.updateMemberInfo(m);
 	}
 
 	// 전체 회원 조회
 	public List selectAllMember() {
-		List list = dao.selectAllMember();
-		return list;
+		return dao.selectAllMember();
 	}
 
 	// 전체 회원 수 조회
 	public int selectAllMemberCount() {
-		int result = dao.selectAllMemberCount();
-		return result;
+		return dao.selectAllMemberCount();
 	}
 
 	// 비밀번호 수정

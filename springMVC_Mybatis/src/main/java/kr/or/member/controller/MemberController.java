@@ -31,7 +31,7 @@ public class MemberController {
 			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
 		}
 		model.addAttribute("loc", "/");
-		return "common/msg"; // login 성공
+		return "common/msg";
 	}
 
 	@RequestMapping(value = "/joinFrm.do")
@@ -106,7 +106,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/mypage.do")
 	public String mypage(String memberId, Model model) {
-		Member member = service.selectOneMember(memberId);
+		Member member = service.selectOneMemberId(memberId);
 
 		model.addAttribute("member", member);
 		return "member/mypage";
@@ -178,8 +178,7 @@ public class MemberController {
 	@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
 	@RequestMapping(value = "/checkId.do")
 	public String checkId(String memberId) {
-		// 해당하는 아이디의 비밀번호가 일치하는지 확인
-		Member member = service.selectOneMember(memberId);
+		Member member = service.selectOneMemberId(memberId);
 
 		if (member == null) {
 			// id 사용 가능
