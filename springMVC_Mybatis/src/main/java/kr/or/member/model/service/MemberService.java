@@ -17,7 +17,7 @@ public class MemberService {
 		super();
 	}
 
-	// 로그인
+	// 로그인 / 아이디 찾기 / 아이디로 회원 찾기
 	public Member selectOneMember(Member m) {
 		return dao.selectOneMember(m);
 	}
@@ -28,14 +28,8 @@ public class MemberService {
 	}
 
 	// 아이디 찾기
-	public Member searchId(Member m) {
-		List list = dao.searchId(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
+	public String searchId(Member m) {
+		return dao.searchId(m);
 	}
 
 	// 비밀번호 찾기

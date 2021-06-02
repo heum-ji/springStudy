@@ -64,10 +64,10 @@ public class MemberController {
 
 	@RequestMapping(value = "/idSearch.do")
 	public String idSearch(Member m, Model model) {
-		Member member = service.searchId(m);
+		String memberId = service.searchId(m);
 
-		if (member != null) {
-			model.addAttribute("msg", "아이디는 [ " + member.getMemberId() + " ] 입니다.");
+		if (memberId != null) {
+			model.addAttribute("msg", "아이디는 [ " + memberId + " ] 입니다.");
 		} else {
 			model.addAttribute("msg", "정보를 조회할 수 없습니다.");
 		}

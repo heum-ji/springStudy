@@ -19,26 +19,19 @@ public class MemberDao {
 		super();
 	}
 
-	// 로그인
+	// 로그인 / 아이디 찾기 / 아이디로 회원 조회
 	public Member selectOneMember(Member m) {
 		return sqlSession.selectOne("member.selectOneMember", m);
 	}
 
 	// 회원가입
 	public int insertMember(Member m) {
-		String query = "insert into member values(?, ?, ?, ?, ?, ?)";
-		Object[] params = { m.getMemberId(), m.getMemberPw(), m.getMemberName(), m.getPhone(), m.getAddress(),
-				m.getGender() };
-
-		return jdbcTemplate.update(query, params);
+		return sqlSession.insert("member.insertMember", m);
 	}
 
 	// 아이디 찾기
-	public List searchId(Member m) {
-		String query = "select * from member where member_name = ? and phone = ?";
-		Object[] params = { m.getMemberName(), m.getPhone() };
-
-		return jdbcTemplate.query(query, params, new MemberRowMapper());
+	public String searchId(Member m) {
+		return sqlSession.selectOne("member.searchId", m);
 	}
 
 	// 비밀번호 찾기
@@ -51,9 +44,7 @@ public class MemberDao {
 
 	// 회원 탈퇴
 	public int deleteMember(String memberId) {
-		String query = "delete from member where member_id = ?";
-
-		return jdbcTemplate.update(query, memberId); // update()에서 Object[] 사용하지 않아도 됨;
+		return sqlSession.delete("member.deleteMember", memberId);
 	}
 
 	// 아이디로 회원 조회
@@ -95,7 +86,7 @@ public class MemberDao {
 	// 비밀번호 수정
 	public int changePwMember(Member m) {
 		String query = "update member set member_pw = ? where member_id = ?";
-		Object[] params = {m.getMemberPw(), m.getMemberId() };
+		Object[] params = { m.getMemberPw(), m.getMemberId() };
 
 		return jdbcTemplate.update(query, params);
 	}
