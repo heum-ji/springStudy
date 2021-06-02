@@ -176,6 +176,21 @@ public class MemberController {
 		return "common/msg";
 	}
 
+	// ID 중복 체크
+		@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
+		@RequestMapping(value = "/checkId.do")
+		public String checkId(String memberId) {
+			// 해당하는 아이디의 비밀번호가 일치하는지 확인
+			Member member = service.selectOneMember(memberId);
+
+			if (member == null) {
+				// id 사용 가능
+				return "1";
+			} else {
+				// id 중복
+				return "0";
+			}
+		}
 	// ajax 사용 x
 //	// 비밀번호 확인
 //	@RequestMapping(value = "/checkPwMember.do")

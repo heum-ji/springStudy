@@ -22,25 +22,26 @@
 		<input type="submit" value="회원가입">
 		<input type="reset" value="취소">
 	</form>
-	
+
 	<script>
-		function checkPw() {
-			var memberPw = $("[name=pwd]").val();
-			var memberId = $("[name=memberId]").val();
-			
+		$("[name=memberId]").on("keyup", function() {
+			var memberId = $(this).val();
+
 			$.ajax({
-				url : "/checkPw.do",
-				data : { memberId : memberId, memberPw : memberPw},
-				type : "post",
+				url : "/checkId.do",
+				data : { memberId : memberId },
+				type : "get",
 				success : function(data) {
-					if(data == 1) { // 비밀번호 체크된 경우
-						$("form").show();
-					} else {	
-						alert("비밀번호를 확인해주세요."); // 비밀번호 틀린 경우
+					if (data == 1) { // 아이디 체크된 경우
+						$("#idChk").html("해당 아이디는 사용 가능합니다.");
+						$("#idChk").css("color", "blue");
+					} else {
+						$("#idChk").html("중복된 아이디 입니다."); // 아이디 중복
+						$("#idChk").css("color", "red");
 					}
 				}
 			});
-		}
+		});
 	</script>
 </body>
 </html>
