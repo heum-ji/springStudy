@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 
@@ -129,7 +131,7 @@ public class MemberController {
 		return "member/allMember";
 	}
 
-	@RequestMapping(value = "allMemberCount.do")
+	@RequestMapping(value = "/allMemberCount.do")
 	public String allMemberCount(Model model) {
 		int result = service.selectAllMemberCount();
 
@@ -177,20 +179,34 @@ public class MemberController {
 	}
 
 	// ID 중복 체크
-		@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
-		@RequestMapping(value = "/checkId.do")
-		public String checkId(String memberId) {
-			// 해당하는 아이디의 비밀번호가 일치하는지 확인
-			Member member = service.selectOneMember(memberId);
+	@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
+	@RequestMapping(value = "/checkId.do")
+	public String checkId(String memberId) {
+		// 해당하는 아이디의 비밀번호가 일치하는지 확인
+		Member member = service.selectOneMember(memberId);
 
-			if (member == null) {
-				// id 사용 가능
-				return "1";
-			} else {
-				// id 중복
-				return "0";
-			}
+		if (member == null) {
+			// id 사용 가능
+			return "1";
+		} else {
+			// id 중복
+			return "0";
 		}
+	}
+
+	@RequestMapping(value = "/allMemberAjax.do")
+	public String allMemberFrm() {
+		return "member/allMemberAjax";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/allMemAjax.do", produces = "application/json;charset=utf-8")
+	public String allMemAjax() {
+		List list = service.selectAllMember();
+
+		return new Gson().toJson(list);
+	}
+
 	// ajax 사용 x
 //	// 비밀번호 확인
 //	@RequestMapping(value = "/checkPwMember.do")

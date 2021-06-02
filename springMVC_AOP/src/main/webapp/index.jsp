@@ -31,6 +31,7 @@
 			<h3><a href="/logout.do">로그아웃</a></h3>
 			<h3><a href="/mypage.do?memberId=${sessionScope.m.memberId }">마이페이지</a></h3>
 			<h3><a href="/allMember.do">전체회원조회</a></h3>
+			<h3><a href="/allMemberAjax.do">전체회원조회(AJAX)</a></h3>
 			<h3><a href="allMemberCount.do">전체회원 수 조회</a></h3>
 			<h3><a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">회원탈퇴</a></h3>
 			<hr>
