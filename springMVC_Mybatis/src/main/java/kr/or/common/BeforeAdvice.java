@@ -19,6 +19,6 @@ public class BeforeAdvice {
 		String methodName = jp.getSignature().getName(); // 호출된 비지니스 메서드 이름 가져오기
 		Object[] args = jp.getArgs(); // 매개변수 가져오기
 
-		System.out.println("[사전처리] " + methodName + " / 매개변수 정보 : " + args[0].toString());
+		//System.out.println("[사전처리] " + methodName + " / 매개변수 정보 : " + args[0].toString());
 	}
 }

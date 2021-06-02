@@ -13,13 +13,15 @@ public class MemberService {
 	@Autowired
 	private MemberDao dao;
 
-	public MemberService() {
-		super();
-	}
-
-	// 로그인 / 아이디 찾기 / 아이디로 회원 찾기
+	// 로그인
 	public Member selectOneMember(Member m) {
-		return dao.selectOneMember(m);
+		List list = dao.selectOneMember(m);
+		Member member = null;
+
+		if (!list.isEmpty()) {
+			member = (Member) list.get(0);
+		}
+		return member;
 	}
 
 	// 회원가입
@@ -28,8 +30,14 @@ public class MemberService {
 	}
 
 	// 아이디 찾기
-	public String searchId(Member m) {
-		return dao.searchId(m);
+	public Member searchId(Member m) {
+		List list = dao.searchId(m);
+		Member member = null;
+
+		if (!list.isEmpty()) {
+			member = (Member) list.get(0);
+		}
+		return member;
 	}
 
 	// 비밀번호 찾기
@@ -75,17 +83,6 @@ public class MemberService {
 	public int selectAllMemberCount() {
 		int result = dao.selectAllMemberCount();
 		return result;
-	}
-
-	// 비밀번호 확인
-	public Member checkPwMember(Member m) {
-		List list = dao.checkPwMember(m);
-		Member member = null;
-
-		if (!list.isEmpty()) {
-			member = (Member) list.get(0);
-		}
-		return member;
 	}
 
 	// 비밀번호 수정
