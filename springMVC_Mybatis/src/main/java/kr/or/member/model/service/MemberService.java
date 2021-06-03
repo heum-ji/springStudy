@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
@@ -19,7 +20,9 @@ public class MemberService {
 	}
 
 	// 회원가입
+	@Transactional
 	public int insertMember(Member m) {
+		dao.insertMember(m);
 		return dao.insertMember(m);
 	}
 
@@ -34,11 +37,13 @@ public class MemberService {
 	}
 
 	// 회원 탈퇴
+	@Transactional
 	public int deleteMember(String memberId) {
 		return dao.deleteMember(memberId);
 	}
 
 	// 회원정보 수정
+	@Transactional
 	public int updateMemberInfo(Member m) {
 		return dao.updateMemberInfo(m);
 	}
@@ -54,6 +59,7 @@ public class MemberService {
 	}
 
 	// 비밀번호 수정
+	@Transactional
 	public int changePwMember(Member m) {
 		return dao.changePwMember(m);
 	}
