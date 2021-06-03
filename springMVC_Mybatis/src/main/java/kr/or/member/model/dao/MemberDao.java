@@ -38,11 +38,6 @@ public class MemberDao {
 		return sqlSession.delete("member.deleteMember", memberId);
 	}
 
-	// 아이디로 회원 조회
-	public Member selectOneMemberId(String memberId) {
-		return sqlSession.selectOne("member.selectOneMemberId", memberId);
-	}
-
 	// 회원정보 수정
 	public int updateMemberInfo(Member m) {
 		return sqlSession.update("member.updateMemberInfo", m);

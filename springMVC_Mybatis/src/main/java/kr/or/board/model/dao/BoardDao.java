@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.board.model.vo.Board;
-import kr.or.board.model.vo.BoardRowMapper;
 import kr.or.board.model.vo.FileTbl;
-import kr.or.board.model.vo.FileTblRowMapper;
 
 @Repository
 public class BoardDao {

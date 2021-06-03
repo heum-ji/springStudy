@@ -38,11 +38,6 @@ public class MemberService {
 		return dao.deleteMember(memberId);
 	}
 
-	// 아이디로 회원 조회
-	public Member selectOneMemberId(String memberId) {
-		return dao.selectOneMemberId(memberId);
-	}
-
 	// 회원정보 수정
 	public int updateMemberInfo(Member m) {
 		return dao.updateMemberInfo(m);

@@ -105,8 +105,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/mypage.do")
-	public String mypage(String memberId, Model model) {
-		Member member = service.selectOneMemberId(memberId);
+	public String mypage(Member m, Model model) {
+		Member member = service.selectOneMember(m);
 
 		model.addAttribute("member", member);
 		return "member/mypage";
@@ -177,8 +177,8 @@ public class MemberController {
 	// ID 중복 체크
 	@ResponseBody // ajax용 어노테이션 return 값을 그대로 주고 싶을 때
 	@RequestMapping(value = "/checkId.do")
-	public String checkId(String memberId) {
-		Member member = service.selectOneMemberId(memberId);
+	public String checkId(Member m) {
+		Member member = service.selectOneMember(m);
 
 		if (member == null) {
 			// id 사용 가능

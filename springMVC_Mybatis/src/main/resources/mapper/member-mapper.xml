@@ -10,7 +10,10 @@
 			phone,
 			address,
 			gender
-		from member where member_id = #{memberId} and member_pw = #{memberPw}
+		from member where member_id = #{memberId} 
+		<if test="memberPw != null">
+			and member_pw = #{memberPw}
+		</if>
 	</select>
 
 	<!-- 회원가입 -->
@@ -22,17 +25,6 @@
 	<delete id="deleteMember" parameterType="string">
 		delete from member where member_id = #{memberId}
 	</delete>
-
-	<!-- memberId로 회원 조회 -->
-	<select id="selectOneMemberId" parameterType="string" resultType="m">
-		select
-			member_id as memberId,
-			member_name as memberName,
-			phone,
-			address,
-			gender
-		from member where member_id = #{memberId}
-	</select>
 
 	<!-- 아이디 찾기 -->
 	<select id="searchId" parameterType="m" resultType="m">
@@ -70,4 +62,5 @@
 	<update id="changePwMember" parameterType="m">
 		update member set member_pw = #{memberPw} where member_id = #{memberId}
 	</update>
+	
 </mapper>
