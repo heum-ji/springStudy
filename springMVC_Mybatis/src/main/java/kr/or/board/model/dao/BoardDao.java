@@ -34,7 +34,7 @@ public class BoardDao {
 
 	// 게시판 목록 조회
 	public List boardList() {
-		return sqlSession.selectList("board.selectList");
+		return sqlSession.selectList("board.boardList");
 	}
 //
 //	// 게시물 상세 조회

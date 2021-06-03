@@ -18,7 +18,7 @@
 		insert into file_tbl values(file_seq.nextval, #{filename}, #{filepath}, #{boardNo})
 	</insert>
 	
-	<select id="selectList" resultType="b">
+	<select id="boardList" resultType="b">
 	select 
 		board_no as boardNo,
 		board_title as boardTitle,
