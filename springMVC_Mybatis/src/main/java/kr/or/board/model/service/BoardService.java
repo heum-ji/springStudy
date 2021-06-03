@@ -38,8 +38,13 @@ public class BoardService {
 	public List boardList() {
 		return dao.boardList();
 	}
-//
-//	// 게시물 상세 조회
+
+	// 게시물 상세 조회
+	public Board selectOneBoard(int boardNo) {
+		return dao.selectOneBoard(boardNo);
+	}
+	
+	// 게시물 상세 조회
 //	public Board selectOneBoard(int boardNo) {
 //		// 게시물 정보 조회
 //		List list = dao.selectOneBoard(boardNo);
@@ -60,4 +65,6 @@ public class BoardService {
 //		}
 //		return b;
 //	}
+	
+
 }

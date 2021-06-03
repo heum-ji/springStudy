@@ -33,19 +33,9 @@ public class BoardDao {
 	public List boardList() {
 		return sqlSession.selectList("board.boardList");
 	}
-//
-//	// 게시물 상세 조회
-//	public List selectOneBoard(int boardNo) {
-//		String query = "select * from board where board_no = ?";
-//		Object[] params = { boardNo };
-//		return jdbcTemplate.query(query, params, new BoardRowMapper());
-//	}
-//
-//	// 첨부파일 조회
-//	public List selectFileInfo(int boardNo) {
-//		String query = "select * from file_tbl where board_no = ?";
-//		Object[] params = { boardNo };
-//
-//		return jdbcTemplate.query(query, params, new FileTblRowMapper());
-//	}
+
+	// 게시판 상세 조회
+	public Board selectOneBoard(int boardNo) {
+		return sqlSession.selectOne("board.selectOneBoard", boardNo);
+	}
 }
