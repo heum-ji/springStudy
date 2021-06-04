@@ -28,7 +28,7 @@ fieldset>input:not([type="submit"]) {
 	<form action="/updateUser.do" method="post">
 		<fieldset>
 			<legend>회원 정보</legend>
-			이메일 : <input type="text" name="email" disabled value=${sessionScope.u.email }><br>
+			이메일 : <input type="text" name="email" readonly value=${sessionScope.u.email }><br>
 			비밀번호 : <input style="border: blue solid 1px;" class="pass-input" type="password" name="userPw" value=${sessionScope.u.userPw }><br>
 			이름 : <input type="text" name="userName" disabled value=${sessionScope.u.userName }><br>
 			나이 : <input type="text" name="age" disabled value=${sessionScope.u.age }><br>
