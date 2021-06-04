@@ -21,7 +21,7 @@
 					<input type="reset" value="취소">
 					<br>
 					<a href="/joinFrm.do">회원가입</a>
-					<a href="/searchFrm.do">비밀번호 찾기</a>
+					<a href="/searchPwFrm.do">비밀번호 찾기</a>
 				</fieldset>
 			</form>
 		</c:when>
@@ -29,7 +29,7 @@
 			<h2>[ ${sessionScope.u.userName } ]님 환영합니다.</h2>
 			<h3><a href="/logout.do">로그아웃</a></h3>
 			<h3><a href="/myinfo.do">내 정보</a></h3>				
-			<h3><a href="/deleteUser.do?email=${sessionScope.u.email }">회원탈퇴</a></h3>
+			<h3><a href="/deleteUser.do">회원탈퇴</a></h3>
 		</c:otherwise>
 	</c:choose>
 </body>

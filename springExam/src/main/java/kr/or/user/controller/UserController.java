@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.or.user.model.service.UserService;
 import kr.or.user.model.vo.User;
@@ -33,6 +34,14 @@ public class UserController {
 		model.addAttribute("loc", "/");
 
 		return "common/msg";
+	}
+
+	// 로그아웃
+	@RequestMapping(value = "/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+
+		return "redirect:/";
 	}
 
 	// 회원가입 창 이동
@@ -71,17 +80,14 @@ public class UserController {
 		return "common/msg";
 	}
 
-	// 로그아웃
-	@RequestMapping(value = "/logout.do")
-	public String logout(HttpSession session) {
-		session.invalidate();
-
-		return "redirect:/";
-	}
-
 	// 회원 정보 창 이동
+	// SessionAttribute : 세션의 정보 불러오기 / required = false : User u == null 에러 방지
 	@RequestMapping(value = "/myinfo.do")
-	public String myinfo() {
+	public String myinfo(@SessionAttribute(required = false) User u, Model model) {
+		User user = service.selectOneUser(u);
+
+		model.addAttribute("u", u);
+
 		return "user/myinfo";
 	}
 
@@ -119,9 +125,9 @@ public class UserController {
 	}
 
 	// 비밀번호 찾기 창 - email / userName
-	@RequestMapping(value = "/searchFrm.do")
+	@RequestMapping(value = "/searchPwFrm.do")
 	public String searchFrm() {
-		return "user/searchFrm";
+		return "user/searchPwFrm";
 	}
 
 	// 비밀번호 찾기

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>searchFrm</title>
+<title>searchPwFrm</title>
 </head>
 <body>
 	<h1>비밀번호 찾기</h1>
@@ -17,7 +17,7 @@
 			<legend>비밀번호 찾기</legend>
 			이메일 : <input type="text" name="email"><br>
 			이름 : <input type="text" name="userName"><br>
-			<input type="submit" value="비밀번호 조회">
+			<input type="submit" value="비밀번호 찾기">
 		</fieldset>
 	</form>
 </body>

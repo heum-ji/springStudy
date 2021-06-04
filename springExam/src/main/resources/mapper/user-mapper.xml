@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="user">
-	<!-- email 중복체크 / 로그인 / 비밀번호 찾기 -->
+	<!-- email 중복체크 + myinfo / 로그인 / 비밀번호 찾기 -->
 	<select id="selectOneUser" parameterType="u" resultType="u">
 		select
 			user_no as userNo,
