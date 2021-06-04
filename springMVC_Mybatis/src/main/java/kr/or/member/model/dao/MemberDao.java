@@ -58,14 +58,4 @@ public class MemberDao {
 		return sqlSession.update("member.changePwMember", m);
 	}
 
-	// 내 쿠폰 확인
-	public List selectAllCoupon(Member m) {
-		return sqlSession.selectList("member.selectAllCoupon", m);
-	}
-
-	// 쿠폰 만료 처리
-	public int expireCoupon() {
-		return sqlSession.update("member.expireCoupon");
-	}
-
 }

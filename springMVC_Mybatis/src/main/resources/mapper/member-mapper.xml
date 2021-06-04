@@ -63,21 +63,4 @@
 		update member set member_pw = #{memberPw} where member_id = #{memberId}
 	</update>
 	
-	<!-- 내 쿠폰 확인 -->
-	<select id="selectAllCoupon" parameterType="m" resultType="c">
-		select
-			coupon_no as couponNO,
-			coupon_name as couponName,
-			coupon_content as couponContent,
-			member_id as memberId,
-			start_date as startDate,
-			end_date as endDate,
-			status
-		from coupon where member_id = #{memberId}
-	</select>
-	
-	<!-- 쿠폰 만료 처리 -->
-	<update id="expireCoupon">
-		UPDATE (SELECT * FROM COUPON WHERE END_DATE <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'yyyy-mm-dd') AND STATUS = 'Y') SET STATUS = 'N'
-	</update>
 </mapper>

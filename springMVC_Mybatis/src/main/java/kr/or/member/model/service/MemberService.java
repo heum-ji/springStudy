@@ -63,14 +63,4 @@ public class MemberService {
 		return dao.changePwMember(m);
 	}
 
-	// 내 쿠폰 확인
-	public List selectAllCoupon(Member m) {
-		return dao.selectAllCoupon(m);
-	}
-
-	// 쿠폰 만료 처리
-	public int expireCoupon() {
-		return dao.expireCoupon();
-	}
-
 }

@@ -1,4 +1,4 @@
-package kr.or.member.model.vo;
+package kr.or.coupon.model.vo;
 
 import lombok.Data;
 

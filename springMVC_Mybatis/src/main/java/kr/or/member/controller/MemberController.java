@@ -6,12 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
@@ -19,7 +17,7 @@ import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 
 @Controller
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = { "*" })
 public class MemberController {
 	@Autowired
 	private MemberService service;
@@ -204,32 +202,6 @@ public class MemberController {
 		List list = service.selectAllMember();
 
 		return new Gson().toJson(list);
-	}
-	
-	// 내 쿠폰 확인
-	@RequestMapping(value = "/couponList.do")
-	public String couponList(@SessionAttribute(required = false)Member m, Model model) {
-		List list = service.selectAllCoupon(m);
-		
-		model.addAttribute("list", list);
-		
-		return "member/couponList";
-	}
-	
-	// 쿠폰 만료 처리
-	@Transactional
-	@RequestMapping(value = "/couponExpired.do")
-	public String expireCoupon(Model model) {
-		int result = service.expireCoupon();
-		
-		if(result > 0) {
-			model.addAttribute("msg", "쿠폰 만료 처리 완료!!!");
-		} else {
-			model.addAttribute("msg", "만료된 쿠폰이 없습니다!");
-		}
-		model.addAttribute("loc","/");
-		
-		return "common/msg";
 	}
 
 }
