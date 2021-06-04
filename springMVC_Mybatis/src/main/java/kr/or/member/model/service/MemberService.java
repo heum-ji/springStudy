@@ -22,7 +22,6 @@ public class MemberService {
 	// 회원가입
 	@Transactional
 	public int insertMember(Member m) {
-		dao.insertMember(m);
 		return dao.insertMember(m);
 	}
 
@@ -62,6 +61,16 @@ public class MemberService {
 	@Transactional
 	public int changePwMember(Member m) {
 		return dao.changePwMember(m);
+	}
+
+	// 내 쿠폰 확인
+	public List selectAllCoupon(Member m) {
+		return dao.selectAllCoupon(m);
+	}
+
+	// 쿠폰 만료 처리
+	public int expireCoupon() {
+		return dao.expireCoupon();
 	}
 
 }

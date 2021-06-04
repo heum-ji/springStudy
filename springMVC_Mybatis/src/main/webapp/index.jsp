@@ -28,6 +28,14 @@
 		</c:when>
 		<c:otherwise>
 			<h2>[ ${sessionScope.m.memberName } ]님 환영합니다.</h2>
+			
+			<%-- 쿠폰 --%>
+			<h3><a href="/couponList.do">내 쿠폰 확인</a></h3>
+			<c:if test="${sessionScope.m.memberId eq 'admin' }">
+				<h3><a href="/couponExpired.do">쿠폰 만료</a></h3>
+			</c:if>	
+			<hr>
+			
 			<h3><a href="/logout.do">로그아웃</a></h3>
 			<h3><a href="/mypage.do?memberId=${sessionScope.m.memberId }">마이페이지</a></h3>
 			<h3><a href="/allMember.do">전체회원조회</a></h3>
@@ -38,6 +46,7 @@
 			<%-- 게시판 --%>
 			<h3><a href="/boardWriteFrm.do">게시판 글쓰기</a></h3>
 			<h3><a href="/boardList.do">게시판 목록</a></h3>
+			
 			<%-- 공지사항 --%>
 			<h1><a href="/allNotice.do">공지사항</a></h1>
 		</c:otherwise>
