@@ -23,12 +23,18 @@
 		<input type="reset" value="취소">
 	</form>
 
+	<button id="btn">네이버로</button>
+
 	<script>
+		$("#btn").on("click", function() {
+			location.href = "http://192.168.10.18";
+		});
+	
 		$("[name=memberId]").on("keyup", function() {
 			var memberId = $(this).val();
 
 			$.ajax({
-				url : "/checkId.do",
+				url : "http://192.168.10.18/checkId.do",
 				data : { memberId : memberId },
 				type : "get",
 				success : function(data) {
