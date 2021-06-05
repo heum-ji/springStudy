@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.or.coupon.model.service.CouponService;
+import kr.or.coupon.model.vo.Coupon;
 import kr.or.member.model.vo.Member;
 
 @Controller
@@ -20,7 +21,7 @@ public class CouponController {
 	// 내 쿠폰 확인
 	@RequestMapping(value = "/couponList.do")
 	public String couponList(@SessionAttribute(required = false) Member m, Model model) {
-		List list = service.selectAllCoupon(m);
+		List<Coupon> list = service.selectAllCoupon(m);
 
 		model.addAttribute("list", list);
 

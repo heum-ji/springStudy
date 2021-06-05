@@ -16,8 +16,8 @@
 
 	<!-- 쿠폰 만료 처리 -->
 	<update id="expireCoupon">
-		UPDATE (SELECT * FROM COUPON WHERE END_DATE <![CDATA[ < ]]>
-		TO_CHAR(SYSDATE, 'yyyy-mm-dd') AND STATUS = 'Y') SET STATUS = 'N'
+		UPDATE COUPON SET STATUS = 'N'
+		WHERE COUPON_NO IN (SELECT COUPON_NO FROM COUPON WHERE END_DATE <![CDATA[ < ]]> TO_CHAR(SYSDATE, 'yyyy-mm-dd') AND STATUS = 'Y')
 	</update>
 
 </mapper>

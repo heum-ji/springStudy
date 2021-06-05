@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.coupon.model.dao.CouponDao;
+import kr.or.coupon.model.vo.Coupon;
 import kr.or.member.model.vo.Member;
 
 @Service
@@ -14,7 +15,7 @@ public class CouponService {
 	private CouponDao dao;
 
 	// 내 쿠폰 확인
-	public List selectAllCoupon(Member m) {
+	public List<Coupon> selectAllCoupon(Member m) {
 		return dao.selectAllCoupon(m);
 	}
 
