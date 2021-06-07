@@ -8,6 +8,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 public class AllMemberChat extends TextWebSocketHandler {
 	// 접속한 회원의 세션을 저장하는 리스트
 	private ArrayList<WebSocketSession> sessionList;
@@ -34,10 +37,40 @@ public class AllMemberChat extends TextWebSocketHandler {
 		// jsp에서 웹 소켓을 통해 보내준 메시지 값(문자열) 확인
 		System.out.println(message.getPayload());
 
-		TextMessage tm = new TextMessage("<div class='chat left'>" + message.getPayload() + "</div>");
+		// 문자열을 JSON 타입으로 처리하기위한 객체 생성
+		JsonParser parser = new JsonParser();
+		// parser를 이용하여 JSON 데이터 분석
+		JsonElement element = parser.parse(message.getPayload());
+		// 키가 type / msg 인 value를 추출
+		String type = element.getAsJsonObject().get("type").getAsString();
+		String msg = element.getAsJsonObject().get("msg").getAsString();
 
-		// 접속한 세션에 메세지 전송
-		session.sendMessage(tm);
+		// 채팅방 입장
+		if (type.equals("enter")) {
+			memberList.put(session, msg); // map에 세션에 해당하는 memberId를 저장
+
+			String sendMsg = "<p>" + msg + "님이 입장하셨습니다. " + "</p>";
+
+			for (WebSocketSession s : sessionList) {
+				if (!session.equals(s)) { // 본인은 전송 제외
+					TextMessage tm = new TextMessage(sendMsg);
+
+					s.sendMessage(tm);
+				}
+			}
+			// 채팅 메시지
+		} else if (type.equals("chat")) {
+			String sendMsg = "<div class='chat left'><span class='chatId'>" + memberList.get(session) + " : </span>"
+					+ msg + "</div>";
+
+			for (WebSocketSession s : sessionList) {
+				if (!session.equals(s)) { // 본인은 전송 제외
+					TextMessage tm = new TextMessage(sendMsg);
+
+					s.sendMessage(tm);
+				}
+			}
+		}
 	}
 
 	// 클라이언트가 연결을 끊을 때
@@ -45,6 +78,12 @@ public class AllMemberChat extends TextWebSocketHandler {
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		// 접속이 끊긴 세션을 리스트에서 제거
 		sessionList.remove(session);
+
+		for (WebSocketSession s : sessionList) {
+			TextMessage tm = new TextMessage("<p>" + memberList.get(session) + "님이 퇴장하셨습니다.</p>");
+			s.sendMessage(tm);
+		}
+		memberList.remove(session);
 	}
 
 }
