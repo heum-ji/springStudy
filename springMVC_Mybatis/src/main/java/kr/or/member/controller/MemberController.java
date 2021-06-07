@@ -204,4 +204,8 @@ public class MemberController {
 		return new Gson().toJson(list);
 	}
 
+	@RequestMapping(value = "/allMemberChat.do")
+	public String allMemberChat() {
+		return "member/allChat";
+	}
 }

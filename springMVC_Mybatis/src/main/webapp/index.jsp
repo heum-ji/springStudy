@@ -29,6 +29,9 @@
 		<c:otherwise>
 			<h2>[ ${sessionScope.m.memberName } ]님 환영합니다.</h2>
 			
+			<%-- 채팅 --%>
+			<h3><a href="/allMemberChat.do">채팅하기</a></h3>
+			
 			<%-- 쿠폰 --%>
 			<h3><a href="/couponList.do">내 쿠폰 확인</a></h3>
 			<c:if test="${sessionScope.m.memberId eq 'admin' }">
