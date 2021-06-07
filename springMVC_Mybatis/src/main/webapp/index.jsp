@@ -31,6 +31,7 @@
 			
 			<%-- 채팅 --%>
 			<h3><a href="/allMemberChat.do">채팅하기</a></h3>
+			<h3><a href="/dmList.do">쪽지함가기</a></h3>
 			
 			<%-- 쿠폰 --%>
 			<h3><a href="/couponList.do">내 쿠폰 확인</a></h3>

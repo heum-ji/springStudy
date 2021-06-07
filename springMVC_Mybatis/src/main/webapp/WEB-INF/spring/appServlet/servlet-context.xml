@@ -101,5 +101,6 @@
 	<context:component-scan base-package="kr.or.board" />
 	<context:component-scan base-package="kr.or.common" />
 	<context:component-scan base-package="kr.or.coupon" />
+	<context:component-scan base-package="kr.or.dm" />
 	
 </beans:beans>

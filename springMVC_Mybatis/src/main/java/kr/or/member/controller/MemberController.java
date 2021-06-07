@@ -204,8 +204,10 @@ public class MemberController {
 		return new Gson().toJson(list);
 	}
 
+	// 채팅방 입장
 	@RequestMapping(value = "/allMemberChat.do")
 	public String allMemberChat() {
 		return "member/allChat";
 	}
+
 }
