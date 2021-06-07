@@ -33,7 +33,8 @@ public class CouponController {
 	@RequestMapping(value = "/couponExpired.do")
 	public String expireCoupon(Model model) {
 		int result = service.expireCoupon();
-
+		
+		System.out.println("만료되엇니?");
 		if (result > 0) {
 			model.addAttribute("msg", "총 " + result + "개 쿠폰이 만료되었습니다.");
 		} else {
