@@ -10,4 +10,12 @@ public class Dm {
 	private String dmContent;
 	private String dmTime;
 	private String readStatus;
+	
+	public String getReadStatus() {
+		if(readStatus.equals("Y")) {
+			return "읽음";
+		} else {
+			return "읽지 않음";
+		}
+	}
 }

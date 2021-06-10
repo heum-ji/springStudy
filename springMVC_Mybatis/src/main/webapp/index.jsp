@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>index</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body>
 	<h1>Spring MVC Mybatis</h1>
@@ -28,6 +29,32 @@
 		</c:when>
 		<c:otherwise>
 			<h2>[ ${sessionScope.m.memberName } ]님 환영합니다.</h2>
+			
+			<script>
+				$(function() {
+					$("#ledOn").on("click", function() {
+						$.ajax({
+							url : "http://192.168.10.4/H",
+							success : function(data) {
+								console.log(data);
+							}
+						});
+					});
+
+					$("#ledOff").on("click", function() {
+						$.ajax({
+							url : "http://192.168.10.4/L",
+							success : function(data) {
+								console.log(data);
+							}
+						});
+					});
+				});
+			</script>
+			
+			<%-- 아두이노 LED --%>
+			<button id="ledOn">LED 켜기</button>
+			<button id="ledOff">LED 끄기</button>
 			
 			<%-- 채팅 --%>
 			<h3><a href="/allMemberChat.do">채팅하기</a></h3>

@@ -210,4 +210,11 @@ public class MemberController {
 		return "member/allChat";
 	}
 
+	// 아두이노 웹연동 테스트
+	@ResponseBody
+	@RequestMapping(value = "/arduinoTest.do")
+	public void arduinoTest(String temp) {
+		System.out.println("현재온도 : " + temp);
+	}
+
 }
